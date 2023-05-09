@@ -5,10 +5,10 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="exampleBean" class="pl.zajavka.ExampleBean">
-        <constructor-arg>
+        <property name="injectedBean">
             <ref bean="injectedBean"/>
-        </constructor-arg>
-        <constructor-arg ref="anotherInjectedBean"/>
+        </property>
+        <property name="anotherInjectedBean" ref="anotherInjectedBean"/>
     </bean>
     <bean id="injectedBean" class="pl.zajavka.InjectedBean"/>
     <bean id="anotherInjectedBean" class="pl.zajavka.AnotherInjectedBean"/>
