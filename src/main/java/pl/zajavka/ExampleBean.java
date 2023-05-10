@@ -1,17 +1,13 @@
 package pl.zajavka;
 
 public class ExampleBean {
-    private InjectedBean injectedBean;
-    private AnotherInjectedBean anotherInjectedBean;
+    private final InjectedBean injectedBean;
+    private final AnotherInjectedBean anotherInjectedBean;
 
-    public void setInjectedBean(InjectedBean injectedBean) {
+    public ExampleBean(InjectedBean injectedBean, AnotherInjectedBean anotherInjectedBean) {
         this.injectedBean = injectedBean;
-        System.out.println("Calling setInjectedBean");
-    }
-
-    public void setAnotherInjectedBean(AnotherInjectedBean anotherInjectedBean) {
         this.anotherInjectedBean = anotherInjectedBean;
-        System.out.println("Calling setAnotherInjectedBean");
+        System.out.println("Calling ExampleBean Constructor");
     }
 
     public void exampleMethod(){
