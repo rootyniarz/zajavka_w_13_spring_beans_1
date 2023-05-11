@@ -1,4 +1,4 @@
-package pl.zajavka;
+package pl.zajavka.code;
 
 public class ExampleBean {
     private final InjectedBean injectedBean;
