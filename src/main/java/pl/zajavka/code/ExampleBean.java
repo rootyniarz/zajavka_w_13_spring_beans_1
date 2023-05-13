@@ -1,25 +1,27 @@
 package pl.zajavka.code;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ExampleBean {
     private InjectedBean injectedBean;
-    private AnotherInjectedBean anotherInjectedBean;
+//    private AnotherInjectedBean anotherInjectedBean;
+    private SomeBean someBean;
 
     public ExampleBean() {
         System.out.println("Calling ExampleBean()");
     }
 
     @Autowired
-    public ExampleBean(InjectedBean injectedBean, AnotherInjectedBean anotherInjectedBean) {
+    public ExampleBean(InjectedBean injectedBean, @Qualifier("someBean2") SomeBean someBean) {
         this.injectedBean = injectedBean;
-        this.anotherInjectedBean = anotherInjectedBean;
+        this.someBean = someBean;
         System.out.println("Calling ExampleBean(injectedBean,anotherInjectedBean)");
     }
 
     public void exampleMethod() {
-        System.out.println("Calling exampleMethod :" + injectedBean + ", " + anotherInjectedBean);
+        System.out.println("Calling exampleMethod :" + injectedBean + ", " + someBean);
     }
 }
