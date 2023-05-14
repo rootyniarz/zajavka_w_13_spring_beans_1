@@ -2,7 +2,6 @@ package pl.zajavka.code;
 
 import org.springframework.stereotype.Service;
 
-@Service
 public class InjectedBean {
 
     public InjectedBean() {
@@ -11,5 +10,13 @@ public class InjectedBean {
 
     public void someMethod(){
         System.out.println("Calling someMethod from InjectedBean");
+    }
+
+    public void initMethod(){
+        System.out.println("InjectedBeaan initMethod()");
+    }
+
+    public void destroyMethod(){
+        System.out.println("InjectedBeaan destroyMethod()");
     }
 }
