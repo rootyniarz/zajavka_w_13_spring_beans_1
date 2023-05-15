@@ -1,5 +1,6 @@
 package pl.zajavka.configuration;
 
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +15,7 @@ import pl.zajavka.code.SingletonBean;
 public class ExampleConfigurationClass {
 
     @Bean
-    public SingletonBean singletonBean(final PrototypeBean prototypeBean){
+    public SingletonBean singletonBean(final ObjectFactory<PrototypeBean> prototypeBean){
         return new SingletonBean(prototypeBean);
     }
 

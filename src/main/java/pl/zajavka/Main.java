@@ -1,5 +1,6 @@
 package pl.zajavka;
 
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import pl.zajavka.code.PrototypeBean;
@@ -9,12 +10,17 @@ import pl.zajavka.configuration.ExampleConfigurationClass;
 public class Main {
     public static void main(String[] args) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(ExampleConfigurationClass.class);
+        System.out.println("Context created");
+
         SingletonBean firstSingleton = context.getBean(SingletonBean.class);
-        PrototypeBean firstPrototype = firstSingleton.callPrototype();
+        ObjectFactory<PrototypeBean> firstPrototypeFactory = firstSingleton.callPrototype();
+        System.out.println("firstPrototypeFactory");
+        PrototypeBean firstPrototype = firstPrototypeFactory.getObject();
 
-        SingletonBean secondSingleton = context.getBean(SingletonBean.class);
-        PrototypeBean secondPrototype = firstSingleton.callPrototype();
+        ObjectFactory<PrototypeBean> secondPrototypeFactory = firstSingleton.callPrototype();
+        System.out.println("secondPrototypeFactory");
+        PrototypeBean secondPrototype = secondPrototypeFactory.getObject();
 
-        System.out.println("firstPrototype == secondPrototype ?" + (firstPrototype == secondPrototype));
+        System.out.println("firstPrototype == secondPrototype? " + (firstPrototype == secondPrototype));
     }
 }
